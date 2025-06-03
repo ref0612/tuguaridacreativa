@@ -1,5 +1,5 @@
 import { Order, CreateOrderDto, PaginatedResponse } from '../types';
-import { api } from '../lib/api';
+import api from '@/lib/api/api';
 
 export const createOrder = async (orderData: CreateOrderDto): Promise<Order> => {
   const response = await api.post<{ order: Order }>('/orders', orderData);

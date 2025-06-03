@@ -1,5 +1,5 @@
 import { Product, ProductFilters, PaginatedResponse } from '../types';
-import { api } from '../lib/api';
+import api from '@/lib/api/api';
 
 export const getProducts = async (filters?: ProductFilters): Promise<PaginatedResponse<Product>> => {
   const response = await api.get<PaginatedResponse<Product>>('/products', { params: filters });

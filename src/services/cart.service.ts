@@ -1,5 +1,5 @@
 import { CartItem } from '../types';
-import { api } from '../lib/api';
+import api from '@/lib/api/api';
 
 export const getCart = async (): Promise<CartItem[]> => {
   const response = await api.get<{ items: CartItem[] }>('/cart');
