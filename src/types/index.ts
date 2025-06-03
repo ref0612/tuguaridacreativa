@@ -52,8 +52,29 @@ export interface Product {
 }
 
 // Tipos de carrito
-export interface CartItem extends Product {
+export interface CartItem {
+  id: string;
+  productId: string;
+  name: string;
+  price: number;
   quantity: number;
+  image: string;
+  description?: string;
+  product?: Product; // Referencia opcional al producto completo
+}
+
+export interface CheckoutFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
+  city: string;
+  zipCode: string;
+  country: string;
+  cardNumber: string;
+  cardName: string;
+  expiryDate: string;
+  cvv: string;
 }
 
 export interface CartState {

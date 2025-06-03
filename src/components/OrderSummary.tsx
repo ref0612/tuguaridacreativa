@@ -1,4 +1,5 @@
 import React from 'react';
+import { CartItem } from '@/types';
 import { 
   Box, 
   Typography, 
@@ -12,15 +13,7 @@ import { ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
 import { useAppSelector } from '@/store/store';
 import { selectCartItems, selectCartTotal } from '@/store/slices/cartSlice';
 
-interface CartItem {
-  id: string;
-  productId: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-  description?: string;
-}
+// Usando la interfaz CartItem desde @/types
 
 const OrderSummary = () => {
   const items = useAppSelector(selectCartItems);

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Provider } from 'react-redux';
-import { Box, Container, AppBar, Toolbar, Typography, IconButton } from '@mui/material';
+import { Box, Container, AppBar, Toolbar, Typography } from '@mui/material';
 import store from '@/store/store';
 import HomePage from '@/pages/HomePage';
 import LoginPage from '@/pages/LoginPage';
@@ -36,7 +36,8 @@ const theme = createTheme({
 });
 
 const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  const [cartOpen, setCartOpen] = useState(false);
+  // Estado del carrito comentado temporalmente
+  // const [cartOpen, setCartOpen] = useState(false);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

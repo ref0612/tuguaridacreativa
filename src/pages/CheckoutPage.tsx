@@ -1,53 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import OrderSummary from '@/components/OrderSummary';
-import { 
-  Container,
-  Typography, 
-  Button, 
-  TextField, 
-  Stepper, 
-  Step, 
-  StepLabel, 
-  StepContent,
-  List, 
-  ListItem, 
-  ListItemText,
-  Alert,
-  CircularProgress,
-  Box
-} from '@mui/material';
-import { CheckCircle as CheckCircleIcon } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '@/store/store';
-import { selectCartItems, selectCartTotal, clearCart } from '@/store/slices/cartSlice';
-import paymentService from '../services/payment.service';
+import { Container, Typography, Box } from '@mui/material';
 
-interface CartItem {
-  id: string;
-  productId: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-  description?: string;
-}
-
-interface CheckoutFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  address: string;
-  city: string;
-  zipCode: string;
-  country: string;
-  cardNumber: string;
-  cardName: string;
-  expiryDate: string;
-  cvv: string;
-}
+// Las interfaces se han movido a types/index.ts para ser reutilizadas
 
 const CheckoutPage: React.FC = () => {
   // Estado y lógica del componente...
+  // Se han eliminado imports no utilizados para limpiar los warnings de ESLint
   
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
