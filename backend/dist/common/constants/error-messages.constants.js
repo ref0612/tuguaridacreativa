@@ -1,0 +1,36 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ERROR_MESSAGES = void 0;
+exports.ERROR_MESSAGES = {
+    INVALID_CREDENTIALS: 'Credenciales inválidas',
+    UNAUTHORIZED: 'No autorizado',
+    FORBIDDEN: 'Acceso denegado',
+    INVALID_TOKEN: 'Token inválido o expirado',
+    INVALID_REFRESH_TOKEN: 'Token de actualización inválido',
+    TOKEN_EXPIRED: 'Token expirado',
+    REFRESH_TOKEN_REQUIRED: 'Token de actualización requerido',
+    VALIDATION_ERROR: 'Error de validación',
+    INVALID_EMAIL: 'Correo electrónico inválido',
+    INVALID_PASSWORD: 'La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una minúscula, un número y un carácter especial',
+    PASSWORD_MISMATCH: 'Las contraseñas no coinciden',
+    USER_NOT_FOUND: 'Usuario no encontrado',
+    USER_ALREADY_EXISTS: 'El correo electrónico ya está en uso',
+    USER_INACTIVE: 'Usuario inactivo',
+    INVALID_USER_ROLE: 'Rol de usuario no válido',
+    DATABASE_ERROR: 'Error en la base de datos',
+    INTERNAL_SERVER_ERROR: 'Error interno del servidor',
+    BAD_REQUEST: 'Solicitud incorrecta',
+    MISSING_FIELDS: 'Faltan campos requeridos',
+    PERMISSION_DENIED: 'No tiene permisos para realizar esta acción',
+    RESOURCE_NOT_FOUND: 'Recurso no encontrado',
+    FILE_TOO_LARGE: 'El archivo es demasiado grande',
+    INVALID_FILE_TYPE: 'Tipo de archivo no permitido',
+    EMAIL_SEND_ERROR: 'Error al enviar el correo electrónico',
+    INSUFFICIENT_STOCK: 'Stock insuficiente',
+    ORDER_ALREADY_PROCESSED: 'La orden ya ha sido procesada',
+    PAYMENT_ERROR: 'Error al procesar el pago',
+    PAYMENT_DECLINED: 'Pago rechazado',
+    INVALID_2FA_CODE: 'Código de autenticación de dos factores inválido',
+    TWO_FACTOR_REQUIRED: 'Se requiere autenticación de dos factores',
+};
+//# sourceMappingURL=error-messages.constants.js.map
