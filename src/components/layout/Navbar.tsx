@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/store';
-import { logoutUser } from '../../store/slices/authSlice';
-import { loadCart } from '../../store/slices/cartSlice';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { logoutUser } from '@/store/slices/authSlice';
+import { loadCart } from '@/store/slices/cartSlice';
 import {
   AppBar,
   Toolbar,

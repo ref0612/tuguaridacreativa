@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import OrderSummary from '@/components/OrderSummary';
 import { 
   Container,
   Typography, 
@@ -29,8 +30,8 @@ import {
   CheckCircle as CheckCircleIcon,
   ShoppingCart as ShoppingCartIcon 
 } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '../store/store';
-import { selectCartItems, selectCartTotal, clearCart } from '../store/slices/cartSlice';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { selectCartItems, selectCartTotal, clearCart } from '@/store/slices/cartSlice';
 import paymentService from '../services/payment.service';
 
 interface CartItem {

@@ -22,9 +22,14 @@
     "types": [
       "node"
     ],
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"],
+      "@store/*": ["src/store/*"],
+      "@assets/*": ["src/assets/*"]
     },
     "typeRoots": [
       "./node_modules/@types",

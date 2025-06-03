@@ -24,8 +24,8 @@ import {
   Refresh as RefreshIcon,
   SupportAgent as SupportIcon,
 } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '../store/store';
-import { fetchFeaturedProducts } from '../store/slices/productsSlice';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { fetchFeaturedProducts } from '@/store/slices/productsSlice';
 import { Product } from '../types';
 
 interface ProductCardProps {

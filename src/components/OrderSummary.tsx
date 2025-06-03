@@ -9,8 +9,8 @@ import {
   Divider 
 } from '@mui/material';
 import { ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
-import { useAppSelector } from '../store/store';
-import { selectCartItems, selectCartTotal } from '../store/slices/cartSlice';
+import { useAppSelector } from '@/store/store';
+import { selectCartItems, selectCartTotal } from '@/store/slices/cartSlice';
 
 interface CartItem {
   id: string;

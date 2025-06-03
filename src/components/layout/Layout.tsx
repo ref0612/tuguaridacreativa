@@ -2,8 +2,8 @@ import React, { ReactNode, useEffect } from 'react';
 import { Box, Container } from '@mui/material';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useAppDispatch } from '../../store/store';
-import { loadCart } from '../../store/slices/cartSlice';
+import { useAppDispatch } from '@/store/store';
+import { loadCart } from '@/store/slices/cartSlice';
 
 interface LayoutProps {
   children: ReactNode;

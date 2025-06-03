@@ -1,7 +1,7 @@
 import { Badge, IconButton, styled } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
-import { useAppSelector } from '../../store/hooks';
-import { selectCartItemsCount } from '../../store/slices/cartSlice';
+import { useAppSelector } from '@/store/hooks';
+import { selectCartItemsCount } from '@/store/slices/cartSlice';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {

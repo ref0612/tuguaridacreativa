@@ -17,14 +17,14 @@ import {
 } from '@mui/material';
 import { Close, Delete } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../store/store';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 import { 
   selectCartItems, 
   selectCartTotal, 
   removeFromCart, 
   updateQuantity, 
   clearCart 
-} from '../../store/slices/cartSlice';
+} from '@/store/slices/cartSlice';
 
 const drawerWidth = 360;
 

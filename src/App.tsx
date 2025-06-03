@@ -5,12 +5,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Provider } from 'react-redux';
 import { Box, Container, AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
-import store from './store/store';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import CheckoutPage from './pages/CheckoutPage';
-import { CartDropdown } from './components/cart/CartDropdown';
-import { CartIcon } from './components/cart/CartIcon';
+import store from '@/store/store';
+import HomePage from '@/pages/HomePage';
+import LoginPage from '@/pages/LoginPage';
+import CheckoutPage from '@/pages/CheckoutPage';
+import { CartDropdown } from '@/components/cart/CartDropdown';
+import { CartIcon } from '@/components/cart/CartIcon';
 
 // Crear un tema personalizado
 const theme = createTheme({

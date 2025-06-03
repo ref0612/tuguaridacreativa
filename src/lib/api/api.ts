@@ -1,6 +1,6 @@
 import axios from 'axios';
-import store from '../../store/store';
-import { logoutUser } from '../../store/slices/authSlice';
+import store from '@/store/store';
+import { logoutUser } from '@/store/slices/authSlice';
 
 // Obtener la URL base del backend desde las variables de entorno o usar localhost:3000 por defecto
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';

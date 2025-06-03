@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Provider } from 'react-redux';
 import App from './App';
-import store from './store/store';
+import store from '@/store/store';
 import reportWebVitals from './reportWebVitals';
 
 // Crear un tema personalizado
