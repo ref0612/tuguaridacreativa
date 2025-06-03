@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Provider } from 'react-redux';
-import { Box, Container, AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
-import { ShoppingCart } from '@mui/icons-material';
+import { Box, Container, AppBar, Toolbar, Typography, IconButton } from '@mui/material';
 import store from '@/store/store';
 import HomePage from '@/pages/HomePage';
 import LoginPage from '@/pages/LoginPage';
 import CheckoutPage from '@/pages/CheckoutPage';
-import { CartDropdown } from '@/components/cart/CartDropdown';
-import { CartIcon } from '@/components/cart/CartIcon';
+
+
 
 // Crear un tema personalizado
 const theme = createTheme({
@@ -46,9 +45,7 @@ const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             TuTienda
           </Typography>
-          <IconButton color="inherit" onClick={() => setCartOpen(true)}>
-            <CartIcon onClick={() => {}} />
-          </IconButton>
+          {/* Botón del carrito temporalmente deshabilitado */}
         </Toolbar>
       </AppBar>
       
@@ -64,7 +61,7 @@ const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         </Container>
       </Box>
       
-      <CartDropdown open={cartOpen} onClose={() => setCartOpen(false)} />
+      {/* CartDropdown ha sido eliminado temporalmente */}
     </Box>
   );
 };
@@ -75,12 +72,14 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          <Routes>
-            <Route path="/" element={<MainLayout><HomePage /></MainLayout>} />
-            <Route path="/login" element={<MainLayout><LoginPage /></MainLayout>} />
-            <Route path="/checkout" element={<MainLayout><CheckoutPage /></MainLayout>} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <MainLayout>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </MainLayout>
         </Router>
       </ThemeProvider>
     </Provider>
