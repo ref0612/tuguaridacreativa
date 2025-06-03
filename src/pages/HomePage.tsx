@@ -413,7 +413,6 @@ const HomePage: React.FC = () => {
                         startIcon={<ShoppingCartIcon />}
                         onClick={() => {
                           // Aquí iría la lógica para agregar al carrito
-                          console.log('Agregar al carrito:', product.id);
                         }}
                         disabled={product.stock === 0}
                       >

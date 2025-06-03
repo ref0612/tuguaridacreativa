@@ -392,42 +392,6 @@ const CheckoutPage = () => {
 
     checkPaymentStatus();
   }, [paymentId, paymentStatus, externalReference, dispatch]);
-  
-  const renderOrderSummary = () => {
-    const items = useAppSelector(selectCartItems);
-    const total = useAppSelector(selectCartTotal);
-    
-    return (
-      <Box sx={{ mt: 2 }}>
-        <Typography variant="h6" gutterBottom>Resumen del pedido</Typography>
-        <List>
-          {items.map((item) => (
-            <ListItem key={item.id}>
-              <Box sx={{ mr: 2, width: 56, height: 56, backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {item.image ? (
-                  <img src={item.image} alt={item.name} style={{ maxWidth: '100%', maxHeight: '100%' }} />
-                ) : (
-                  <ShoppingCartIcon color="action" />
-                )}
-              </Box>
-              <ListItemText
-                primary={item.name}
-                secondary={`Cantidad: ${item.quantity}`}
-              />
-              <ListItemSecondaryAction>
-                <Typography>${(item.price * item.quantity).toFixed(2)}</Typography>
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
-          <Typography variant="h6">Total</Typography>
-          <Typography variant="h6">${total.toFixed(2)}</Typography>
-        </Box>
-      </Box>
-    );
-  };
 
   if (loading) {
     return (
@@ -499,7 +463,7 @@ const CheckoutPage = () => {
         {/* Resumen del pedido */}
         <Box>
           <Paper sx={{ p: 3, position: 'sticky', top: 16 }}>
-            {renderOrderSummary()}
+            <OrderSummary />
           </Paper>
         </Box>
       </Box>

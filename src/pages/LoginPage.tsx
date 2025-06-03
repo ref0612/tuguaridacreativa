@@ -33,8 +33,7 @@ const LoginPage: React.FC = () => {
       setIsLoading(true);
       try {
         // Aquí irá la lógica de autenticación
-        console.log('Login attempt with:', values);
-        // Simulamos un retraso en la autenticación
+        // Lógica de autenticación
         await new Promise((resolve) => setTimeout(resolve, 1000));
         // Redirigir al dashboard después del login exitoso
         navigate('/dashboard');

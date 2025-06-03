@@ -94,7 +94,10 @@ api.interceptors.response.use(
   }
 );
 
-// Exportar métodos HTTP comunes para facilitar su uso
+/**
+ * Métodos HTTP comunes para interactuar con la API
+ * Proporciona una capa de abstracción sobre Axios para realizar peticiones HTTP
+ */
 const get = (url: string, config = {}) => api.get(url, config);
 const post = (url: string, data: any, config = {}) => api.post(url, data, config);
 const put = (url: string, data: any, config = {}) => api.put(url, data, config);
