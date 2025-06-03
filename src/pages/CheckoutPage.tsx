@@ -46,4 +46,19 @@ interface CheckoutFormData {
   cvv: string;
 }
 
-// Resto del código...
+const CheckoutPage: React.FC = () => {
+  // Estado y lógica del componente...
+  
+  return (
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Finalizar Compra
+      </Typography>
+      <Box sx={{ mt: 4 }}>
+        <OrderSummary />
+      </Box>
+    </Container>
+  );
+};
+
+export default CheckoutPage;
