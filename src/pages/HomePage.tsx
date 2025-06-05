@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -24,9 +24,8 @@ import {
   Refresh as RefreshIcon,
   SupportAgent as SupportIcon,
 } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '@/store/store';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchFeaturedProducts } from '@/store/slices/productsSlice';
-import { Product } from '../types';
 
 interface ProductCardProps {
   id: string | number;

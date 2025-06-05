@@ -1,0 +1,31 @@
+import { Product } from './product.entity';
+export declare class Category {
+    id: string;
+    name: string;
+    slug: string;
+    description: string;
+    image: string | null;
+    thumbnail: string | null;
+    metaTitle: string | null;
+    metaDescription: string | null;
+    metaKeywords: string | null;
+    order: number;
+    isActive: boolean;
+    isFeatured: boolean;
+    deletedAt: Date | null;
+    products: Product[];
+    children: Category[];
+    parent: Category | null;
+    level: number;
+    path: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    generateSlugAndPath(): void;
+    afterLoad(): void;
+    private updatePath;
+    addProduct(product: Product): void;
+    removeProduct(productId: string): boolean;
+    isDescendantOf(categoryId: string): boolean;
+    getTotalProductCount(includeChildren?: boolean): number;
+    static createDefault(partial?: Partial<Category>): Category;
+}

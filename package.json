@@ -26,7 +26,10 @@
     "yup": "^1.6.1"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "set PORT=3001 && react-app-rewired start",
+    "start:frontend": "react-app-rewired start",
+    "start:backend": "cd backend && npm run start:dev",
+    "start:all": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
@@ -61,6 +64,9 @@
     "@types/react-dom": "^19.1.5",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "ajv": "^6.12.6",
+    "ajv-keywords": "^3.5.2",
+    "concurrently": "^9.1.2",
     "customize-cra": "^1.0.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",

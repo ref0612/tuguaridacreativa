@@ -1,39 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { Provider } from 'react-redux';
 import { Box, Container, AppBar, Toolbar, Typography } from '@mui/material';
-import store from '@/store/store';
 import HomePage from '@/pages/HomePage';
 import LoginPage from '@/pages/LoginPage';
 import CheckoutPage from '@/pages/CheckoutPage';
 
 
 
-// Crear un tema personalizado
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#dc004e',
-    },
-  },
-  typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontWeight: 500,
-    },
-    h2: {
-      fontWeight: 500,
-    },
-    h3: {
-      fontWeight: 500,
-    },
-  },
-});
+
 
 const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   // Estado del carrito comentado temporalmente
@@ -69,21 +43,16 @@ const MainLayout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
 const App: React.FC = () => {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router>
-          <MainLayout>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </MainLayout>
-        </Router>
-      </ThemeProvider>
-    </Provider>
+    <Router>
+      <MainLayout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </MainLayout>
+    </Router>
   );
 };
 

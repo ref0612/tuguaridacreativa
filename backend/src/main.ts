@@ -3,13 +3,16 @@ import { ValidationPipe, ClassSerializerInterceptor } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
-import helmet from 'helmet';
-import * as csurf from 'csurf';
-import * as rateLimit from 'express-rate-limit';
-import * as compression from 'compression';
+import helmet from 'helmet'; // Importación corregida para TypeScript
+import cookieParser from 'cookie-parser';
+import csrf from 'csurf';
+import rateLimit from 'express-rate-limit';
+import compression from 'compression';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const configService = app.get(ConfigService);
 
   // Configuración de seguridad con Helmet
@@ -27,16 +30,31 @@ async function bootstrap() {
 
   // Configuración de CSRF
   if (configService.get('CSRF_ENABLED') === 'true') {
-    app.use(csurf());
+    // Parse cookies first
+    app.use(cookieParser());
+    // Then setup CSRF protection
+    const csrfProtection = csrf({
+      cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict'
+      }
+    });
+    app.use(csrfProtection);
   }
 
   // Configuración de rate limiting
-  app.use(
-    rateLimit({
-      windowMs: configService.get('RATE_LIMIT_TTL', 60) * 1000,
-      max: configService.get('RATE_LIMIT_LIMIT', 100),
-    }),
-  );
+  try {
+    const limiter = rateLimit({
+      windowMs: Number(configService.get('RATE_LIMIT_TTL', '60')) * 1000,
+      max: Number(configService.get('RATE_LIMIT_LIMIT', '100')),
+      message: { message: 'Demasiadas solicitudes, por favor intente más tarde' },
+    });
+    app.use(limiter);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+    console.warn('Error al configurar el rate limiting:', errorMessage);
+  }
 
   // Compresión de respuestas
   app.use(compression());
@@ -63,7 +81,7 @@ async function bootstrap() {
   if (configService.get('SWAGGER_ENABLED') === 'true') {
     const config = new DocumentBuilder()
       .setTitle(configService.get('APP_NAME') || 'API')
-      .setDescription(`API Documentation`)
+      .setDescription('API Documentation')
       .setVersion(configService.get('APP_VERSION') || '1.0')
       .addBearerAuth(
         { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
@@ -80,16 +98,31 @@ async function bootstrap() {
         swaggerOptions: {
           persistAuthorization: true,
         },
-      },
+      }
     );
   }
 
+  // Configuración de archivos estáticos
+  app.useStaticAssets(join(__dirname, '..', 'public'));
+  app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.setViewEngine('hbs');
+
+  // Validar variables de entorno requeridas
+  const requiredEnvVars = ['DATABASE_URL', 'JWT_SECRET'];
+  const missingEnvVars = requiredEnvVars.filter(envVar => !configService.get(envVar));
+  
+  if (missingEnvVars.length > 0) {
+    throw new Error(`Faltan variables de entorno requeridas: ${missingEnvVars.join(', ')}`);
+  }
+
   // Iniciar la aplicación
-  const port = configService.get<number>('PORT', 3000);
+  const port = Number(configService.get('PORT', '3000'));
   await app.listen(port);
   
   console.log(`🚀 Aplicación ejecutándose en: http://localhost:${port}`);
-  console.log(`📚 Documentación de la API: http://localhost:${port}/api/docs`);
+  if (configService.get('SWAGGER_ENABLED') === 'true') {
+    console.log(`📚 Documentación de la API: http://localhost:${port}${configService.get('SWAGGER_PATH', '/api/docs')}`);
+  }
 }
 
 bootstrap().catch((err) => {
